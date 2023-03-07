@@ -1,82 +1,103 @@
 <template>
+  <div>
     <a-menu
-      id="dddddd"
       v-model:openKeys="openKeys"
       v-model:selectedKeys="selectedKeys"
       style="width: 256px"
       mode="inline"
-      @click="handleClick"
     >
-      <a-sub-menu key="sub1" @titleClick="titleClick">
-        <template #icon>
-          <MailOutlined />
-        </template>
-        <template #title>Navigation One</template>
-        <a-menu-item-group key="g1">
+      <router-link to="/home">
+        <a-menu-item key="home">
           <template #icon>
-            <QqOutlined />
+            <HomeOutlined />
           </template>
-          <template #title>Item 1</template>
-          <a-menu-item key="1">Option 1</a-menu-item>
-          <a-menu-item key="2">Option 2</a-menu-item>
-        </a-menu-item-group>
-        <a-menu-item-group key="g2" title="Item 2">
-          <a-menu-item key="3">Option 3</a-menu-item>
-          <a-menu-item key="4">Option 4</a-menu-item>
-        </a-menu-item-group>
-      </a-sub-menu>
-      <a-sub-menu key="sub2" @titleClick="titleClick">
-        <template #icon>
-          <AppstoreOutlined />
-        </template>
-        <template #title>Navigation Two</template>
-        <a-menu-item key="5">Option 5</a-menu-item>
-        <a-menu-item key="6">Option 6</a-menu-item>
-        <a-sub-menu key="sub3" title="Submenu">
-          <a-menu-item key="7">Option 7</a-menu-item>
-          <a-menu-item key="8">Option 8</a-menu-item>
-        </a-sub-menu>
-      </a-sub-menu>
-      <a-sub-menu key="sub4">
-        <template #icon>
-          <SettingOutlined />
-        </template>
-        <template #title>Navigation Three</template>
-        <a-menu-item key="9">Option 9</a-menu-item>
-        <a-menu-item key="10">Option 10</a-menu-item>
-        <a-menu-item key="11">Option 11</a-menu-item>
-        <a-menu-item key="12">Option 12</a-menu-item>
-      </a-sub-menu>
+          Trang Chủ
+        </a-menu-item>
+      </router-link>
+      <router-link to="/class">
+        <a-menu-item key="class">
+          <template #icon>
+            <CalendarOutlined />
+          </template>
+          Lớp của tôi
+        </a-menu-item>
+      </router-link>
+      <router-link to="/management">
+        <a-menu-item key="management">
+          <template #icon>
+            <OrderedListOutlined />
+          </template>
+          Quản lý
+        </a-menu-item>
+      </router-link>
+      <router-link to="/schedule">
+        <a-menu-item key="schedule">
+          <template #icon>
+            <CarryOutOutlined />
+          </template>
+          Lịch dạy
+        </a-menu-item>
+      </router-link>
+      <router-link to="/exam">
+        <a-menu-item key="exam">
+          <template #icon>
+            <BarChartOutlined />
+          </template>
+          Khảo thí
+        </a-menu-item>
+      </router-link>
+      <router-link to="/information">
+        <a-menu-item key="information">
+          <template #icon>
+            <MessageOutlined />
+          </template>
+          Tin tức
+        </a-menu-item>
+      </router-link>
+      <router-link to="/support">
+        <a-menu-item key="support">
+          <template #icon>
+            <QuestionCircleFilled />
+          </template>
+          Hỗ trợ
+        </a-menu-item>
+      </router-link>
     </a-menu>
-  </template>
-  <script>
-  import { defineComponent, ref, watch } from 'vue';
-  import { MailOutlined, QqOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons-vue';
-  export default defineComponent({
-    components: {
-      MailOutlined,
-      QqOutlined,
-      AppstoreOutlined,
-      SettingOutlined,
-    },
-    setup() {
-      const selectedKeys = ref(['1']);
-      const openKeys = ref(['sub1']);
-      const handleClick = e => {
-        console.log('click', e);
-      };
-      const titleClick = e => {
-        console.log('titleClick', e);
-      };
-      watch(() => openKeys, val => {
-        console.log('openKeys', val);
-      });
-      return {
-        selectedKeys,
-        openKeys,
-        handleClick,
-        titleClick,
-      };
-    },
-  });
-  </script>
+  </div>
+</template>
+<script lang="ts">
+import { defineComponent, reactive, toRefs } from "vue";
+import {
+  CalendarOutlined,
+  HomeOutlined,
+  OrderedListOutlined,
+  CarryOutOutlined,
+  BarChartOutlined,
+  MessageOutlined,
+  QuestionCircleFilled,
+} from "@ant-design/icons-vue";
+import type { MenuTheme } from "ant-design-vue";
+export default defineComponent({
+  components: {
+    CalendarOutlined,
+    HomeOutlined,
+    OrderedListOutlined,
+    CarryOutOutlined,
+    BarChartOutlined,
+    MessageOutlined,
+    QuestionCircleFilled,
+  },
+  setup() {
+    const state = reactive({
+      theme: "light" as MenuTheme,
+      selectedKeys: ["home"],
+      openKeys: [""],
+    });
+
+    return {
+      ...toRefs(state),
+    };
+  },
+});
+</script>
+

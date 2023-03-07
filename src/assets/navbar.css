@@ -1,0 +1,26 @@
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: #b8c7ce36;
+}
+
+.ant-menu-item {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.ant-menu-light .ant-menu-item:hover {
+    color: #ff5722;
+}
+
+.ant-menu-light .ant-menu-item-active {
+    color: #ff5722;
+}
+
+.ant-menu-item-selected {
+    color: #ff5722;
+}
+
+.ant-menu-inline .ant-menu-item::after {
+    border-right: 0;
+    border-left: 3px solid #ff5722;
+    left: 0;
+}
