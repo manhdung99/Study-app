@@ -24,3 +24,25 @@
     border-left: 3px solid #ff5722;
     left: 0;
 }
+.ant-tabs-card .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+background-color: white;
+color: #424B50;
+border:1px solid #DEE2E6 ;
+border-bottom: none;
+}
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab{
+border-right: 0;
+border-left: 0;
+}
+.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab + .ant-tabs-tab{
+    margin-left: 0;
+}
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab{
+    padding: 0;
+}
+.ant-tabs-card .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+    border-radius: 0;
+}
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab{
+    border-color: #DEE2E6;
+}

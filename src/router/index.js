@@ -9,13 +9,13 @@ import Schedule from "../components/schedule/Schedule.vue"
 import Support from "../components/support/Support.vue"
 
 const routes = [
-    {path:'/home' , component: Home},
+    {path:'/' , component: Home},
     {path:'/class' , component: Class},
     {path:'/management' , component: Management},
     {path:'/exam' , component: Exam},
     {path:'/information' , component: Information},
     {path:'/schedule' , component: Schedule},
-    {path:'/support' , component: Support}
+    {path:'/support' , component: Support},
 ];
 
 const router = createRouter({

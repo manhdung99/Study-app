@@ -9,8 +9,11 @@ import Navbar from "./components/navbar/Navbar.vue";
     <div class="">
       <Navbar />
     </div>
-    <div>
+    <div class="flex-1">
       <router-view></router-view>
+    </div>
+    <div class="w-[200px] flex justify-center " >
+      Avatar
     </div>
   </main>
 </template>

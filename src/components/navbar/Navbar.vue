@@ -6,7 +6,7 @@
       style="width: 256px"
       mode="inline"
     >
-      <router-link to="/home">
+      <router-link to="/">
         <a-menu-item key="home">
           <template #icon>
             <HomeOutlined />
