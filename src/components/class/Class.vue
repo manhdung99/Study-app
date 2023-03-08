@@ -1,6 +1,8 @@
 <script setup>
+import AddBookModalVue from "./AddBookModal.vue";
 import MainContent from "./MainContent.vue";
 import TopContent from "./TopContent.vue";
+import AddBookModal from "./AddBookModal.vue";
 </script>
 
 
@@ -13,10 +15,11 @@ import TopContent from "./TopContent.vue";
       <MainContent />
     </div>
   </div>
+  <AddBookModal />
 </template>
 <script>
 export default {
-  components: { TopContent },
+  components: { TopContent, MainContent, AddBookModal },
   name: "Class",
 };
 </script>

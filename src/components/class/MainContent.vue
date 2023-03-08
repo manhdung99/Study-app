@@ -7,36 +7,36 @@
         :tab="`${data.name}`"
       ></a-tab-pane>
       <a-tab-pane key="9">
-      <template #tab>
-        <span class="flex items-center">
+        <template #tab>
+          <span class="flex items-center">
             <BarChartOutlined />
-          Kết quả học tập
-        </span>
-      </template>
-    </a-tab-pane>
-    <a-tab-pane key="10">
-      <template #tab>
-        <span class="flex items-center">
+            Kết quả học tập
+          </span>
+        </template>
+      </a-tab-pane>
+      <a-tab-pane key="10">
+        <template #tab>
+          <span class="flex items-center">
             <ReadOutlined />
-          Tủ sách kiến nghị
-        </span>
-      </template>
-    </a-tab-pane>
+            Tủ sách kiến nghị
+          </span>
+        </template>
+      </a-tab-pane>
     </a-tabs>
   </div>
-  <div>
+  <div class="px-4">
     <BookOfClass />
   </div>
-  <div>
+  <div class="px-4">
     <RecommendedBook />
   </div>
 </template>
 
 <script lang="ts">
-import { ReadOutlined, BarChartOutlined } from '@ant-design/icons-vue';
+import { ReadOutlined, BarChartOutlined } from "@ant-design/icons-vue";
 import { defineComponent, ref } from "vue";
-import BookOfClass from './BookOfClass.vue'
-import RecommendedBook from './RecommendedBook.vue'
+import BookOfClass from "./BookOfClass.vue";
+import RecommendedBook from "./RecommendedBook.vue";
 export default defineComponent({
   setup() {
     const menu = [
@@ -58,7 +58,7 @@ export default defineComponent({
     ReadOutlined,
     BarChartOutlined,
     BookOfClass,
-    RecommendedBook
+    RecommendedBook,
   },
 });
 </script>
