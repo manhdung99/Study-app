@@ -8,6 +8,7 @@ import AddBookModal from "./AddBookModal.vue";
 
 <template >
   <div>
+    <p>{{ $store.state.test }}</p>
     <div>
       <TopContent />
     </div>

@@ -16,8 +16,8 @@
       :currentPrice="book.currentPrice"
       :oldPrice="book.oldPrice"
     />
-    <div
-      class="bg-[#F8F9FA] min-w-[168px] h-[250px] flex flex-col items-center justify-center rounded-[5px]"
+    <div @click ="()=>updateModalStatus(true)"
+      class="bg-[#00000021] min-w-[168px] h-[250px] flex flex-col items-center justify-center rounded-[5px] cursor-pointer"
     >
       <span>
         <PlusOutlined :style="{ fontSize: '40px', color: '#707070' }"
@@ -29,6 +29,7 @@
 
 <script>
 import Book from "../book/Book.vue";
+import { mapActions } from "vuex";
 import { PlusOutlined } from "@ant-design/icons-vue";
 export default {
   name: "RecommendedBook",
@@ -59,6 +60,9 @@ export default {
   components: {
     Book,
     PlusOutlined,
+  },
+  methods:{
+    ...mapActions(['updateModalStatus']),
   },
 };
 </script>
