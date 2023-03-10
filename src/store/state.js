@@ -5,6 +5,7 @@ export default  {
           books: [],
           booksCase:[],
           currentId : 1,
+          isDisplaySuccessMessage:false,
         }
       }
   }

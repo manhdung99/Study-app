@@ -3,4 +3,5 @@ export default {
     currentId : state =>state.currentId,
     books : state =>state.books,
     booksCase: state => state.booksCase,
+    isDisplaySuccessMessage : state => state.isDisplaySuccessMessage,
 }

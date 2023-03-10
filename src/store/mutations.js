@@ -11,4 +11,7 @@ export default  {
     setCurrentId(state,payload){
         state.currentId = payload;
     },
+    setIsDisplaySuccessMessage(state,payload){
+        state.isDisplaySuccessMessage = payload;
+    },
 }

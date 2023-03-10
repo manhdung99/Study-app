@@ -81,6 +81,8 @@ export default {
     },
     addBooksToClass({commit},books){
         commit('setBooks',books);
+    },
+    updateSuccessMessStatus({commit},{status}){
+        commit('setIsDisplaySuccessMessage',status)
     }
-
 }

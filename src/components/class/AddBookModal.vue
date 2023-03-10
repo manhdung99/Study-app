@@ -25,11 +25,11 @@
         class="flex flex-wrap overflow-y-auto max-h-[480px] gap-x-6 add-book-modal mb-2"
       >
         <fieldset
-        v-for="book in books"
+          v-for="book in books"
           :disabled="booksSelected.includes(book.id)"
           class="mb-8 rounded-[5px] relative border border-transparent"
           v-bind:key="book.id"
-          @click="($event) => checkedElement($event,book)"
+          @click="($event) => checkedElement($event, book)"
         >
           <div class="opacity-0 absolute top-0 left-0 w-full h-full"></div>
           <Book
@@ -40,8 +40,8 @@
         </fieldset>
       </div>
       <fieldset
-      :disabled="tmpBook.length === 0"
-      @click="AddBook()"
+        :disabled="tmpBook.length === 0"
+        @click="AddBook()"
         class="bg-[#338131] text-white font-semibold inline-block px-5 py-2 rounded mt-4 ml-[50%] -translate-x-1/2 hover:opacity-80 cursor-pointer"
       >
         Lưu sách
@@ -57,14 +57,14 @@ import { CloseCircleFilled } from "@ant-design/icons-vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  data(){
-    return{
+  data() {
+    return {
       name: "AddBookModal",
-      tmpBook:[],
-      booksSelected:[],
+      tmpBook: [],
+      booksSelected: [],
     };
   },
-  
+
   computed: {
     ...mapGetters(["isOpenModal"]),
     ...mapGetters(["books"]),
@@ -74,26 +74,29 @@ export default defineComponent({
   methods: {
     ...mapActions(["updateModalStatus"]),
     ...mapActions(["addBooksToClass"]),
+    ...mapActions(["updateSuccessMessStatus"]),
 
-    addBookToTmp(book){
-      if(this.tmpBook.findIndex(data => data.id === book.id) >= 0){
-        this.tmpBook = this.tmpBook.filter(data => data.id != book.id);
-      }else{
-        this.tmpBook = [...this.tmpBook,book];
+    addBookToTmp(book) {
+      if (this.tmpBook.findIndex((data) => data.id === book.id) >= 0) {
+        this.tmpBook = this.tmpBook.filter((data) => data.id != book.id);
+      } else {
+        this.tmpBook = [...this.tmpBook, book];
       }
-      if(this.tmpBook.length > 0){
+      if (this.tmpBook.length > 0) {
         this.isDisable = false;
       }
-      
     },
 
-    AddBook(){
-     let currentCase = this.booksCase.filter(data => data.id == this.currentId );
-     currentCase[0].data = [...currentCase[0].data].concat(this.tmpBook);
-     this.updateModalStatus(false);
+    AddBook() {
+      let currentCase = this.booksCase.filter(
+        (data) => data.id == this.currentId
+      );
+      currentCase[0].data = [...currentCase[0].data].concat(this.tmpBook);
+      this.updateModalStatus(false);
+      this.updateSuccessMessStatus({ status: true });
     },
 
-    checkedElement(element,book) {
+    checkedElement(element, book) {
       this.addBookToTmp(book);
       element = element.target.parentElement;
       if (element.classList.contains("is-checked")) {
@@ -101,15 +104,19 @@ export default defineComponent({
       } else {
         element.classList.add("is-checked");
       }
-    
     },
   },
   watch: {
-       '$store.state.currentId': function() {
-        this.booksSelected = this.currentId ? this.booksCase.find(data => data.id == this.currentId ).data.map((data)=>{return data.id}) : [];
+    "$store.state.currentId": function () {
+      this.booksSelected = this.currentId
+        ? this.booksCase
+            .find((data) => data.id == this.currentId)
+            .data.map((data) => {
+              return data.id;
+            })
+        : [];
+    },
   },
-  
- },
   mounted() {
     this.$store.dispatch("getBooks");
   },
@@ -117,6 +124,5 @@ export default defineComponent({
     Book,
     CloseCircleFilled,
   },
-  
 });
 </script>
