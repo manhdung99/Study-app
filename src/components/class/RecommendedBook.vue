@@ -10,14 +10,15 @@
   </div>
   <div class="flex space-x-8 max-w-5xl overflow-y-auto list-book pb-6 mb-6">
     <Book
-      v-for="book in books"
+      v-for="book in booksRecommend"
       v-bind:key="book.id"
       :title="book.title"
       :currentPrice="book.currentPrice"
       :oldPrice="book.oldPrice"
     />
-    <div @click ="()=>updateModalStatus(true)"
-      class="bg-[#00000021] min-w-[168px] h-[250px] flex flex-col items-center justify-center rounded-[5px] cursor-pointer"
+    <div
+      @click="() => updateModalStatus(true)"
+      class="bg-[#00000021] min-w-[168px] h-[258px] flex flex-col items-center justify-center rounded-[5px] cursor-pointer"
     >
       <span>
         <PlusOutlined :style="{ fontSize: '40px', color: '#707070' }"
@@ -29,40 +30,25 @@
 
 <script>
 import Book from "../book/Book.vue";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import { PlusOutlined } from "@ant-design/icons-vue";
 export default {
   name: "RecommendedBook",
   data() {
-    return {
-      books: [
-        {
-          id: 1,
-          title: "SGK Địa Lý 12",
-          currentPrice: "30.000 đ",
-          oldPrice: "40.000 đ",
-        },
-        {
-          id: 2,
-          title: "SGK Lịch Sử 12",
-          currentPrice: "30.000 đ",
-          oldPrice: "40.000 đ",
-        },
-        {
-          id: 3,
-          title: "SGK Hoá Học 12",
-          currentPrice: "30.000 đ",
-          oldPrice: "40.000 đ",
-        },
-      ],
-    };
+    return {};
+  },
+  mounted() {
+    this.$store.dispatch("getBooksOfRecommend");
   },
   components: {
     Book,
     PlusOutlined,
   },
-  methods:{
-    ...mapActions(['updateModalStatus']),
+  computed: {
+    ...mapGetters(["booksRecommend"]),
+  },
+  methods: {
+    ...mapActions(["updateModalStatus"]),
   },
 };
 </script>

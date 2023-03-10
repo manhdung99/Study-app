@@ -59,3 +59,7 @@
 .ant-tabs-card>.ant-tabs-nav .ant-tabs-tab {
     padding-top: 6px;
 }
+
+.is-checked {
+    border: 1px solid #7BA1B7;
+}

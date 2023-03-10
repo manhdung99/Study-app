@@ -4,7 +4,7 @@
       <img src="../../assets/image/Thumbnail.png" alt="book image" />
     </div>
     <div class="bg-[#F8F9FA] px-[14px] rounded-[5px]">
-      <span class="font-semibold text-[#00314C] text-base">
+      <span class="font-semibold text-[#00314C] text-base pt-2 block">
         {{ title }}
       </span>
       <div class="flex space-x-2 pb-3 items-center">

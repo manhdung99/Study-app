@@ -3,8 +3,11 @@
     :class="isOpenModal ? 'flex' : 'hidden'"
     class="fixed top-0 bottom-0 left-0 right-0 bg-[#00000021] flex justify-center items-center"
   >
-    <div  class="w-[800px] h-[700px] bg-white p-4 relative">
-      <div @click="()=>updateModalStatus(false)" class="absolute right-4 cursor-pointer">
+    <div class="w-[800px] h-[700px] bg-white p-4 relative">
+      <div
+        @click="() => updateModalStatus(false)"
+        class="absolute right-4 cursor-pointer"
+      >
         <CloseCircleFilled :style="{ fontSize: '24px', color: '#707070' }" />
       </div>
       <div
@@ -19,15 +22,26 @@
         />
       </div>
       <div
-        class="flex flex-wrap overflow-y-auto max-h-[450px] gap-x-6 add-book-modal"
+        class="flex flex-wrap overflow-y-auto max-h-[480px] gap-x-6 add-book-modal mb-2"
       >
-        <Book
+        <div
+          class="mb-8 rounded-[5px] relative border border-transparent"
           v-for="book in books"
           v-bind:key="book.id"
-          :title="book.title"
-          :currentPrice="book.currentPrice"
-          :oldPrice="book.oldPrice"
-        />
+          @click="($event) => checkedElement($event)"
+        >
+          <div class="opacity-0 absolute top-0 left-0 w-full h-full"></div>
+          <Book
+            :title="book.title"
+            :currentPrice="book.currentPrice"
+            :oldPrice="book.oldPrice"
+          />
+        </div>
+      </div>
+      <div
+        class="bg-[#338131] text-white font-semibold inline-block px-5 py-2 rounded mt-4 ml-[50%] -translate-x-1/2 hover:opacity-80 cursor-pointer"
+      >
+        Lưu sách
       </div>
     </div>
   </div>
@@ -39,75 +53,23 @@ import { mapActions, mapGetters } from "vuex";
 import { CloseCircleFilled } from "@ant-design/icons-vue";
 export default {
   name: "AddBookModal",
-  // data() {
-  //   return {
-  //     books: [
-  //       {
-  //         id: 1,
-  //         title: "SGK Địa Lý 12",
-  //         currentPrice: "30.000 đ",
-  //         oldPrice: "40.000 đ",
-  //       },
-  //       {
-  //         id: 2,
-  //         title: "SGK Lịch Sử 12",
-  //         currentPrice: "30.000 đ",
-  //         oldPrice: "40.000 đ",
-  //       },
-  //       {
-  //         id: 3,
-  //         title: "SGK Hoá Học 12",
-  //         currentPrice: "30.000 đ",
-  //         oldPrice: "40.000 đ",
-  //       },
-  //       {
-  //         id: 4,
-  //         title: "SGK Địa Lý 12",
-  //         currentPrice: "30.000 đ",
-  //         oldPrice: "40.000 đ",
-  //       },
-  //       {
-  //         id: 5,
-  //         title: "SGK Lịch Sử 12",
-  //         currentPrice: "30.000 đ",
-  //         oldPrice: "40.000 đ",
-  //       },
-  //       {
-  //         id: 6,
-  //         title: "SGK Hoá Học 12",
-  //         currentPrice: "30.000 đ",
-  //         oldPrice: "40.000 đ",
-  //       },
-  //       {
-  //         id: 7,
-  //         title: "SGK Địa Lý 12",
-  //         currentPrice: "30.000 đ",
-  //         oldPrice: "40.000 đ",
-  //       },
-  //       {
-  //         id: 8,
-  //         title: "SGK Lịch Sử 12",
-  //         currentPrice: "30.000 đ",
-  //         oldPrice: "40.000 đ",
-  //       },
-  //       {
-  //         id: 9,
-  //         title: "SGK Hoá Học 12",
-  //         currentPrice: "30.000 đ",
-  //         oldPrice: "40.000 đ",
-  //       },
-  //     ],
-  //   };
-  // },
-  computed:{
-    ...mapGetters(['isOpenModal']),
-    ...mapGetters(['books'])
+  computed: {
+    ...mapGetters(["isOpenModal"]),
+    ...mapGetters(["books"]),
   },
-  methods:{
-    ...mapActions(['updateModalStatus']),
+  methods: {
+    ...mapActions(["updateModalStatus"]),
+    checkedElement(element) {
+      element = element.target.parentElement;
+      if (element.classList.contains("is-checked")) {
+        element.classList.remove("is-checked");
+      } else {
+        element.classList.add("is-checked");
+      }
+    },
   },
-  mounted(){
-    this.$store.dispatch('getBooks');
+  mounted() {
+    this.$store.dispatch("getBooks");
   },
   components: {
     Book,

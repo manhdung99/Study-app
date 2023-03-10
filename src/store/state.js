@@ -3,6 +3,9 @@ export default  {
         return {
           isOpenModal: true,
           books: [],
+          booksOfClass:[],
+          booksRecommend:[
+          ],
         }
       }
   }
