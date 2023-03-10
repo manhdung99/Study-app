@@ -1,6 +1,6 @@
 export default {
     isOpenModal : state =>state.isOpenModal,
+    currentId : state =>state.currentId,
     books : state =>state.books,
-    booksOfClass : state => state.booksOfClass,
-    booksRecommend : state => state.booksRecommend,
+    booksCase: state => state.booksCase,
 }

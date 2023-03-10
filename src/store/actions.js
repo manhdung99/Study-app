@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 export default {
-    updateModalStatus({commit},status){
+    updateModalStatus({commit},{status,id}){
+        commit('setCurrentId',id)
         commit('setIsOpenModal',status);
     },
     getBooks ({commit}){
@@ -10,50 +11,76 @@ export default {
             commit('setBooks',response.data);
         } )
     },
-    getBooksOfClass ({commit}){
+    getBooksCase ({commit}){
         const books =[
-            {
-                id: 1,
-                title: "SGK Địa Lý 12",
-                currentPrice: "30.000 đ",
-                oldPrice: "40.000 đ",
-              },
-              {
-                id: 2,
-                title: "SGK Lịch Sử 12",
-                currentPrice: "30.000 đ",
-                oldPrice: "40.000 đ",
-              },
-              {
-                id: 3,
-                title: "SGK Hoá Học 12",
-                currentPrice: "30.000 đ",
-                oldPrice: "40.000 đ",
-              },
-        ]
-        commit('setBooksOfClass',books);
+          {
+          "id":1,
+          "title":">> bộ sách ôn luyện cơ bản",
+          "description":"Những quyển sách này giúp các em xây dựng nền tảng vững chắc",
+          "data":[
+           {
+            "title": "SGK Địa Lý 12",
+            "image": "image 1",
+            "currentPrice": "30.000 đ",
+            "oldPrice": "40.000 đ",
+            "id": "1"
+           },
+           {
+            "title": "SGK Địa Lý 12",
+            "image": "image 2",
+            "currentPrice": "30.000 đ",
+            "oldPrice": "40.000 đ",
+            "id": "2"
+           },
+           {
+            "title": "SGK Địa Lý 12",
+            "image": "image 3",
+            "currentPrice": "30.000 đ",
+            "oldPrice": "40.000 đ",
+            "id": "3"
+           }
+          ]
+          },
+          {
+          "id":2,
+          "title":">> bộ sách ôn luyện nâng cao",
+          "description":"Những quyển sách này giúp các em xây dựng nền tảng vững chắc",
+          "data":[
+           {
+            "title": "SGK Địa Lý 12",
+            "image": "image 1",
+            "currentPrice": "30.000 đ",
+            "oldPrice": "40.000 đ",
+            "id": "1"
+           },
+           {
+            "title": "SGK Địa Lý 12",
+            "image": "image 2",
+            "currentPrice": "30.000 đ",
+            "oldPrice": "40.000 đ",
+            "id": "2"
+           },
+           {
+            "title": "SGK Địa Lý 12",
+            "image": "image 3",
+            "currentPrice": "30.000 đ",
+            "oldPrice": "40.000 đ",
+            "id": "3"
+           },
+           {
+            "title": "SGK Địa Lý 12",
+            "image": "image 4",
+            "currentPrice": "30.000 đ",
+            "oldPrice": "40.000 đ",
+            "id": "4"
+           }
+          ]
+          }
+          ]
+        commit('setBooksCase',books);
     },
-    getBooksOfRecommend ({commit}){
-        const books =[
-            {
-                id: 1,
-                title: "SGK Địa Lý 12",
-                currentPrice: "30.000 đ",
-                oldPrice: "40.000 đ",
-              },
-              {
-                id: 2,
-                title: "SGK Lịch Sử 12",
-                currentPrice: "30.000 đ",
-                oldPrice: "40.000 đ",
-              },
-              {
-                id: 3,
-                title: "SGK Hoá Học 12",
-                currentPrice: "30.000 đ",
-                oldPrice: "40.000 đ",
-              },
-        ]
-        commit('setBooksRecommend',books);
+    addBooksToClass({commit},books){
+        commit('setBooks',books);
     }
+
 }

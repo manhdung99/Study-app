@@ -63,3 +63,6 @@
 .is-checked {
     border: 1px solid #7BA1B7;
 }
+fieldset:disabled{
+    opacity: 0.8;
+}

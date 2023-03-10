@@ -5,10 +5,10 @@ export default  {
     setBooks(state,payload){
         state.books = payload;
     },
-    setBooksOfClass(state,payload){
-        state.booksOfClass = payload;
+    setBooksCase(state,payload){
+        state.booksCase = payload;
     },
-    setBooksRecommend(state,payload){
-        state.booksRecommend = payload;
-    }
+    setCurrentId(state,payload){
+        state.currentId = payload;
+    },
 }

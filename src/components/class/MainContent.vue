@@ -24,19 +24,44 @@
       </a-tab-pane>
     </a-tabs>
   </div>
-  <div class="px-4">
-    <BookOfClass />
+  <div v-for ="bookCase in booksCase" key = "bookCase.id" class="px-4">
+    <div>
+    <p class="text-[#00314C] uppercase text-base font-bold mb-7">
+     {{ bookCase.title }}
+    </p>
+    <span class="text-[#7C7C7C] text-base italic mb-7 block"
+      >{{ bookCase.description }}</span>
   </div>
-  <div class="px-4">
-    <RecommendedBook />
+  <div class="flex space-x-8 max-w-5xl overflow-y-auto list-book pb-6 mb-6">
+    <Book
+      v-for="book in bookCase.data"
+      v-bind:key="book.id"
+      :title="book.title"
+      :currentPrice="book.currentPrice"
+      :oldPrice="book.oldPrice"
+    />
+    <div
+      @click="() => updateModalStatus({status:true,id:bookCase.id})"
+      class="bg-[#00000021] min-w-[168px] h-[258px] flex flex-col items-center justify-center rounded-[5px] cursor-pointer"
+    >
+      <span>
+        <PlusOutlined :style="{ fontSize: '40px', color: '#707070' }"
+      /></span>
+      <span class="italic text-[#979797]">Thêm sách</span>
+    </div>
+  </div>
+  </div>
+  <div class="inline-block px-4 py-2 bg-red-500 text-white absolute left-[600px] top-[540px] font-bold rounded hover:opacity-80 cursor-pointer">
+    Xóa sách
   </div>
 </template>
 
 <script lang="ts">
+import Book from "../book/Book.vue";
+import { mapGetters,mapActions } from "vuex";
+import { PlusOutlined } from "@ant-design/icons-vue";
 import { ReadOutlined, BarChartOutlined } from "@ant-design/icons-vue";
 import { defineComponent, ref } from "vue";
-import BookOfClass from "./BookOfClass.vue";
-import RecommendedBook from "./RecommendedBook.vue";
 export default defineComponent({
   setup() {
     const menu = [
@@ -57,8 +82,19 @@ export default defineComponent({
   components: {
     ReadOutlined,
     BarChartOutlined,
-    BookOfClass,
-    RecommendedBook,
+    Book,
+    PlusOutlined
+  },
+  mounted() {
+    this.$store.dispatch("getBooksCase");
+  },
+  computed: {
+    ...mapGetters(["booksCase"]),
+    ...mapGetters(["currentId"]),
+    ...mapGetters(["isOpenModal"]),
+  },
+  methods: {
+    ...mapActions(["updateModalStatus"]),
   },
 });
 </script>
